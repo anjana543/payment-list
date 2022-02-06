@@ -4,18 +4,17 @@ import Payments from "./pages/Payments";
 import PaymentDetail from "./pages/PaymentDetail";
 import Body from "./layout/Body";
 import Footer from "./layout/Footer";
-
 import { AuthProvider } from "./services/authProvider";
 
 function App() {
   return (
     <ThemeProvider>
       <AuthProvider>
-        <Router>
+        <Router basename="/payment-list">
           <Body>
             <Routes>
               <Route path="/" exact element={<Payments />} />
-              <Route path="/services/:id" element={<PaymentDetail />} />
+              <Route path="/:id" element={<PaymentDetail />} />
             </Routes>
           </Body>
           <Footer />

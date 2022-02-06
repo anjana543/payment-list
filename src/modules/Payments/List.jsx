@@ -54,7 +54,7 @@ const List = ({
       }
     `,
     onClick: (e, item) => {
-      navigate(`/services/${item.id}`);
+      navigate(`/${item.id}`);
     },
   };
 
