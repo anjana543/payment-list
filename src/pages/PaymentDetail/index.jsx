@@ -9,7 +9,7 @@ import Loader from "../../components/Loader";
 import { Breadcrumbs, Crumb } from "../../components/Breadcrumbs";
 import { CardWrapper, CardBody } from "../../components/Card";
 import Group from "../../components/Group";
-import Block from "../../components/Block";
+import Box from "../../components/Box";
 import Text from "../../components/Text";
 import Button from "../../components/Button";
 import Image from "../../components/Image";
@@ -24,7 +24,8 @@ import {
   lowercaseText,
 } from "../../utils";
 import { PAYMENT_DETAILS_URL } from "../../utils/constant";
-function PaymentDetail() {
+
+export const PaymentDetail = () => {
   const navigate = useNavigate();
   const { user } = useAuthState();
   const theme = useTheme();
@@ -95,6 +96,7 @@ function PaymentDetail() {
               </Text>
             </Group>
           )}
+
           {response?.amountRefunded > 0 && (
             <Button withBorder relative>
               <LeftCurvedArrow
@@ -107,10 +109,11 @@ function PaymentDetail() {
               </Text>
             </Button>
           )}
+
           <CardWrapper lg>
             <CardBody>
               {response?.currencyCode && (
-                <Group>
+                <Group mb="5">
                   <Text
                     font={theme.fontSizes.sm}
                     color={theme.colors.neutral_700}
@@ -130,7 +133,7 @@ function PaymentDetail() {
               )}
 
               {response?.processor && (
-                <Group>
+                <Group mb="5">
                   <Text
                     font={theme.fontSizes.sm}
                     color={theme.colors.neutral_700}
@@ -158,7 +161,7 @@ function PaymentDetail() {
 
               {response?.paymentInstrument?.paymentInstrumentData?.binData
                 ?.network && (
-                <Group>
+                <Group mb="5">
                   <Text
                     font={theme.fontSizes.sm}
                     color={theme.colors.neutral_700}
@@ -196,7 +199,7 @@ function PaymentDetail() {
               )}
 
               {response?.orderId && (
-                <Group>
+                <Group mb="5">
                   <Text
                     font={theme.fontSizes.sm}
                     color={theme.colors.neutral_700}
@@ -215,7 +218,7 @@ function PaymentDetail() {
               )}
 
               {response?.date && (
-                <Group>
+                <Group mb="5">
                   <Text
                     font={theme.fontSizes.sm}
                     color={theme.colors.neutral_700}
@@ -254,7 +257,7 @@ function PaymentDetail() {
               )}
             </CardBody>
           </CardWrapper>
-          <Block align="space-between">
+          <Box align="space-between" column>
             {response?.processor && (
               <CardWrapper md>
                 <CardBody column pt="20" pb="20">
@@ -441,17 +444,15 @@ function PaymentDetail() {
                 </CardBody>
               </CardWrapper>
             )}
-          </Block>
+          </Box>
         </>
       )}
       {isLoading && <Loader color={theme?.colors?.primary_100} />}
       {error && (
-        <Block p="10" m="20">
+        <Box p="10" m="20">
           No matching Payment could be found!
-        </Block>
+        </Box>
       )}
     </Container>
   );
-}
-
-export default PaymentDetail;
+};

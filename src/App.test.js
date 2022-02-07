@@ -1,8 +1,6 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render, screen } from "./utils/testUtils";
+import App from "./App";
 
-test('renders Primer welcome', () => {
+test("renders App component", async () => {
   render(<App />);
-  const primerElement = screen.getByText(/Primer React Challenge Boilerplate/i);
-  expect(primerElement).toBeInTheDocument();
 });

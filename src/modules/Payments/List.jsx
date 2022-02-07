@@ -13,7 +13,7 @@ import {
   uppercaseText,
   concatString,
 } from "../../utils";
-import Block from "../../components/Block";
+import Box from "../../components/Box";
 import LeftCurvedArrow from "../../components/svg-icons/left-curved-arrow";
 import ChevronRight from "../../components/svg-icons/chev-right";
 
@@ -170,14 +170,14 @@ const List = ({
         />
       )}
       {!isLoading && data.length === 0 && !error && (
-        <Block p="10" m="20">
+        <Box p="10" m="20">
           Found no data to display!
-        </Block>
+        </Box>
       )}
       {error && (
-        <Block p="10" m="20">
+        <Box p="10" m="20">
           Unable to retrieve your transaction details. Please check later!
-        </Block>
+        </Box>
       )}
     </>
   );

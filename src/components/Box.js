@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled, { css as groupCss } from "styled-components";
 import css from "@styled-system/css";
 
-const Block = styled.div`
+const Box = styled.div`
   ${css({
     fontFamily: "secondary",
     lineHeight: "sm",
@@ -13,6 +13,14 @@ const Block = styled.div`
   color: ${({ color, theme }) => color || theme.colors.black};
   padding: ${({ p }) => p + "px" || 0};
   margin: ${({ m }) => m + "px" || 0};
+  ${(props) =>
+    props.column &&
+    groupCss`
+      @media screen and (max-width: 820px) {
+        width: 100%;
+        flex-direction: column;
+      }
+    `}
 `;
 
-export default Block;
+export default Box;

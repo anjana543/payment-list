@@ -3,7 +3,7 @@ import styled, { css as groupCss, useTheme } from "styled-components";
 import css from "@styled-system/css";
 import PropTypes from "prop-types";
 import Text from "./Text";
-import Block from "./Block";
+import Box from "./Box";
 import Search from "./svg-icons/search";
 import useOnClickOutside from "../hooks/useOnClickOutside";
 
@@ -30,7 +30,7 @@ function Input({ val, css, handleChange, label }) {
     if (!val) setShowField(false);
   });
   return (
-    <Block>
+    <Box>
       <Search
         color={theme.colors.black}
         size="20"
@@ -52,7 +52,7 @@ function Input({ val, css, handleChange, label }) {
         css={css}
         ref={ref}
       />
-    </Block>
+    </Box>
   );
 }
 

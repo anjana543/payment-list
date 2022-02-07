@@ -1,10 +1,10 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import ThemeProvider from "./components/ThemeProvider";
-import Payments from "./pages/Payments";
-import PaymentDetail from "./pages/PaymentDetail";
+import { AuthProvider } from "./services/authProvider";
+import { PaymentList } from "./pages/PaymentList";
+import { PaymentDetail } from "./pages/PaymentDetail";
 import Body from "./layout/Body";
 import Footer from "./layout/Footer";
-import { AuthProvider } from "./services/authProvider";
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
         <Router basename="/payment-list">
           <Body>
             <Routes>
-              <Route path="/" exact element={<Payments />} />
+              <Route path="/" element={<PaymentList />} />
               <Route path="/:id" element={<PaymentDetail />} />
             </Routes>
           </Body>

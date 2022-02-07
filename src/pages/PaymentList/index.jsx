@@ -9,7 +9,7 @@ import List from "../../modules/Payments/List";
 import { PAYMENT_LIST_URL, PAGINATION_LIMIT } from "../../utils/constant";
 import { queryString, lowercaseText, lowerArray } from "../../utils";
 
-const Payments = () => {
+export const PaymentList = () => {
   const { user } = useAuthState();
   const theme = useTheme();
   const [list, setPayments] = useState([]);
@@ -61,7 +61,7 @@ const Payments = () => {
   }, [list, searchParam]);
 
   return (
-    <Container>
+    <Container data-testid="payment">
       <Title>Transactions</Title>
       <Filter
         data={filteredList()}
@@ -81,5 +81,3 @@ const Payments = () => {
     </Container>
   );
 };
-
-export default Payments;

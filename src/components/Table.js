@@ -1,7 +1,7 @@
 import styled, { css as groupCss } from "styled-components";
 import css from "@styled-system/css";
 import Loader from "./Loader";
-import Block from "./Block";
+import Box from "./Box";
 
 const Main = styled.div`
   display: flex;
@@ -99,10 +99,10 @@ const Table = ({
         <tbody>{data.map((item, index) => row(item, index))}</tbody>
       </T>
       {isLoading && (
-        <Block p="20" m="30">
+        <Box p="20" m="30">
           {" "}
           <Loader size={50} color={theme?.colors?.primary_100} />
-        </Block>
+        </Box>
       )}
     </Main>
   );

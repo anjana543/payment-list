@@ -1,6 +1,6 @@
 import React, { useEffect, useState, createContext } from "react";
 import Loader from "../components/Loader";
-import Block from "../components/Block";
+import Box from "../components/Box";
 import { LOGIN_URL, USERNAME, PASSWORD, GRANT_TYPE } from "../utils/constant";
 import { useTheme } from "styled-components";
 
@@ -39,13 +39,13 @@ export const AuthProvider = ({ children }) => {
   return (
     <AuthContext.Provider value={state}>
       {state.status === "pending" ? (
-        <Block p="20" m="30">
+        <Box p="20" m="30">
           <Loader size={100} color={theme?.colors?.primary_100} />
-        </Block>
+        </Box>
       ) : state.status === "error" ? (
-        <Block p="20" m="30">
+        <Box p="20" m="30">
           Something went wrong with the authentication. Please check later!
-        </Block>
+        </Box>
       ) : (
         children
       )}

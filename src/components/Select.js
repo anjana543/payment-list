@@ -2,24 +2,27 @@ import styled, { css as groupCss, useTheme } from "styled-components";
 import css from "@styled-system/css";
 import PropTypes from "prop-types";
 import Text from "./Text";
-import Block from "./Block";
+import Box from "./Box";
 import { capitalizeFirstLetter } from "../utils";
 
 const SelectWrapper = styled.select`
   ${css({
     backgroundColor: "neutral_100",
     color: "primary_100",
-    fontSize: "md",
+    fontSize: "sm",
     border: "none",
     marginLeft: "10px",
     cursor: "pointer",
+    position: "relative",
+    bottom: "2px",
+    width: "5.5em",
   })}
   ${(props) => props.css && groupCss(...props.css)};
   option {
     ${css({
       backgroundColor: "neutral_100",
       color: "primary_100",
-      fontSize: "md",
+      fontSize: "sm",
       border: "none",
       margin: "10px",
     })}
@@ -47,7 +50,7 @@ const Select = ({
 }) => {
   const theme = useTheme();
   return (
-    <Block align="flex-end">
+    <Box align="flex-end">
       <Text font={theme.fontSizes.md} fontWgt={theme.fontWeights.bold}>
         {label}
       </Text>
@@ -68,7 +71,7 @@ const Select = ({
         ))}
         {isLoading && <option>Loading ...</option>}
       </SelectWrapper>
-    </Block>
+    </Box>
   );
 };
 

@@ -28,6 +28,9 @@ export const CardWrapper = styled.div`
     groupCss`
       width: 20%;
     `}
+  @media screen and (max-width: 820px) {
+    width: 100%;
+  }
 `;
 
 export const CardHeader = styled.header`
@@ -57,6 +60,9 @@ export const CardBody = styled.div`
   padding-left: ${({ pf }) => (pf || 32) + "px"};
   padding-top: ${({ pt }) => (pt || 32) + "px"};
   padding-bottom: ${({ mb }) => (mb || 32) + "px"};
+  @media screen and (max-width: 820px) {
+    flex-direction: column;
+  }
 `;
 
 export const CardIcon = styled.span`
