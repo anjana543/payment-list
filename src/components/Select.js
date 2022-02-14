@@ -51,7 +51,7 @@ const Select = ({
   const theme = useTheme();
   return (
     <Box align="flex-end">
-      <Text font={theme.fontSizes.md} fontWgt={theme.fontWeights.bold}>
+      <Text font={theme?.fontSizes?.md} fontWgt={theme?.fontWeights?.bold}>
         {label}
       </Text>
       <SelectWrapper
@@ -60,6 +60,7 @@ const Select = ({
         onChange={handleChange}
         value={val}
         data-testid="select"
+        name={label}
       >
         <option value="" key={`${label}_0`}>
           All

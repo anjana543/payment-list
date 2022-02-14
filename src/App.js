@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import ThemeProvider from "./components/ThemeProvider";
 import { AuthProvider } from "./services/authProvider";
 import { PaymentList } from "./pages/PaymentList";
@@ -9,17 +9,15 @@ import Footer from "./layout/Footer";
 function App() {
   return (
     <ThemeProvider>
-      <AuthProvider>
-        <Router basename="/payment-list">
-          <Body>
-            <Routes>
-              <Route path="/" element={<PaymentList />} />
-              <Route path="/:id" element={<PaymentDetail />} />
-            </Routes>
-          </Body>
-          <Footer />
-        </Router>
-      </AuthProvider>
+      <Body>
+        <AuthProvider>
+          <Routes>
+            <Route path="/" element={<PaymentList />} />
+            <Route path="/:id" element={<PaymentDetail />} />
+          </Routes>
+        </AuthProvider>
+      </Body>
+      <Footer />
     </ThemeProvider>
   );
 }

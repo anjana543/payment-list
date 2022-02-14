@@ -31,7 +31,7 @@ async function prepareHeaders(itemToFetch) {
 }
 
 const useFetch = (url, options, moreParam) => {
-  const [response, setResponse] = useState(null);
+  const [response, setResponse] = useState({});
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [hasMore, setHasMore] = useState(false);
@@ -41,13 +41,13 @@ const useFetch = (url, options, moreParam) => {
     try {
       const parsedOpts = await prepareHeaders(options);
       const res = await fetch(url, parsedOpts);
-      if (!res.ok) throw res;
       const json = await res.json();
       setResponse(json);
       setIsLoading(false);
       if (moreParam) {
         setHasMore(json?.[moreParam] !== null);
       }
+      if (!res.ok) throw res;
     } catch (error) {
       setError(error);
       setIsLoading(false);

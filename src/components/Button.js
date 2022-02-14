@@ -34,7 +34,7 @@ const Status = styled.div`
         borderStyle: "solid",
       })}
     `}
-  border-color: ${({ color, theme }) => color || theme.colors.black};
+  border-color: ${({ color, theme }) => color || theme?.colors?.black};
   &.success {
     ${css({
       color: "info_800",

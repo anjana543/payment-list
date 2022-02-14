@@ -1,4 +1,4 @@
-import { useMemo, useState, useCallback } from "react";
+import { useMemo, useState, useCallback, useEffect } from "react";
 import styled from "styled-components";
 import css from "@styled-system/css";
 import Select from "../../components/Select";
@@ -53,6 +53,13 @@ const Line = styled.div`
   }
 `;
 
+const filterParams = {
+  processor: "",
+  paymentMethod: "",
+  status: "",
+  currency_code: "",
+};
+
 const Filter = ({
   data,
   handleFilterValues,
@@ -60,12 +67,7 @@ const Filter = ({
   isLoading,
 }) => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectValues, setSelectValues] = useState({
-    processor: "",
-    paymentMethod: "",
-    status: "",
-    currency_code: "",
-  });
+  const [selectValues, setSelectValues] = useState(filterParams);
   const processors = useMemo(
     () => filterArrayByProp(data, "processor"),
     [data]
@@ -104,6 +106,13 @@ const Filter = ({
     setSearchTerm(e.target.value);
     debouncedSave(e?.target?.value);
   };
+
+  useEffect(() => {
+    return () => {
+      setSearchTerm("");
+      setSelectValues(filterParams);
+    };
+  }, []);
 
   return (
     <Main>

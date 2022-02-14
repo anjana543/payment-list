@@ -4,6 +4,12 @@ import Box from "../components/Box";
 import { LOGIN_URL, USERNAME, PASSWORD, GRANT_TYPE } from "../utils/constant";
 import { useTheme } from "styled-components";
 
+const currentState = {
+  status: "pending",
+  error: null,
+  user: null,
+};
+
 const getUser = async () => {
   const data = `username=${USERNAME}&password=${PASSWORD}&grant_type=${GRANT_TYPE}`;
   const response = await fetch(LOGIN_URL, {
@@ -21,13 +27,9 @@ const getUser = async () => {
 
 export const AuthContext = createContext();
 
-export const AuthProvider = ({ children }) => {
+export const AuthProvider = ({ children, initialState = currentState }) => {
   const theme = useTheme();
-  const [state, setState] = useState({
-    status: "pending",
-    error: null,
-    user: null,
-  });
+  const [state, setState] = useState(initialState);
 
   useEffect(() => {
     getUser().then(
@@ -38,11 +40,11 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider value={state}>
-      {state.status === "pending" ? (
+      {state?.status === "pending" ? (
         <Box p="20" m="30">
           <Loader size={100} color={theme?.colors?.primary_100} />
         </Box>
-      ) : state.status === "error" ? (
+      ) : state?.status === "error" ? (
         <Box p="20" m="30">
           Something went wrong with the authentication. Please check later!
         </Box>

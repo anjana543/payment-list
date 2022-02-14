@@ -64,10 +64,10 @@ const List = ({
       align: "right",
       content: (item) => (
         <>
-          <Text font={theme.fontSizes.lg} fontWgt={theme.fontWeights.bold}>
+          <Text font={theme?.fontSizes?.lg} fontWgt={theme?.fontWeights?.bold}>
             {parseRawPrice(item?.amount)}
           </Text>
-          <Text font={theme.fontSizes.md} p="0 5px">
+          <Text font={theme?.fontSizes?.md} p="0 5px">
             {uppercaseText(item?.currencyCode)}
           </Text>
         </>
@@ -100,7 +100,7 @@ const List = ({
         item?.amountRefunded > 0 ? (
           <>
             <LeftCurvedArrow
-              color={theme.colors.black}
+              color={theme?.colors?.black}
               size="15"
               viewBox="0 0 15 15"
             />
@@ -153,7 +153,7 @@ const List = ({
     icon: {
       key: "icon",
       align: "center",
-      content: (item) => <ChevronRight color={theme.colors.primary_100} />,
+      content: (item) => <ChevronRight color={theme?.colors?.primary_100} />,
     },
   };
 

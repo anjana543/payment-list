@@ -7,11 +7,12 @@ const Text = styled.div`
     lineHeight: "sm",
     display: "inline-block",
   })}
-  color: ${({ color, theme }) => color || theme.colors.black};
-  font-size: ${({ font, theme }) => (font || theme.fontSizes.sm) + "px"};
+  color: ${({ color, theme }) => color || theme?.colors?.black};
+  font-size: ${({ font, theme }) => (font || theme?.fontSizes?.sm) + "px"};
   padding: ${({ p }) => p || 0};
   margin: ${({ m }) => m || 0};
-  font-weight: ${({ fontWgt, theme }) => fontWgt || theme.fontWeights.regular};
+  font-weight: ${({ fontWgt, theme }) =>
+    fontWgt || theme?.fontWeights?.regular};
   ${(props) =>
     props.block &&
     groupCss`

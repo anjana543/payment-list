@@ -59,6 +59,7 @@ const Table = ({
         align={columns[key].align}
         width={columns[key].width}
         css={columns[key].cssHeader}
+        data-testid={`header-${key}`}
       >
         {columns[key].label ? columns[key].label : ""}
       </Th>
@@ -70,6 +71,7 @@ const Table = ({
       align={columns[key].align}
       width={columns[key].width}
       css={columns[key].css}
+      data-testid={`col-${key}`}
     >
       {columns[key].content ? columns[key].content(item) : item[key]}
     </Td>
@@ -85,6 +87,7 @@ const Table = ({
           data.length === index + 1 && {
             ref: setRef,
           })}
+        data-testid={`row-${index}`}
       >
         {Object.keys(columns).map((key) => cell(key, item))}
       </Tr>
@@ -92,7 +95,7 @@ const Table = ({
   };
   return (
     <Main>
-      <T>
+      <T data-testid="main-table">
         <thead>
           <tr>{headerColumns()}</tr>
         </thead>

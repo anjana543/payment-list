@@ -33,7 +33,7 @@ export const PaymentDetail = () => {
   const { response, error, isLoading } = useFetch(
     `${PAYMENT_DETAILS_URL.replace(":id", id)}`,
     {
-      bearerToken: user.accessToken,
+      bearerToken: user?.accessToken,
     }
   );
 
@@ -49,7 +49,10 @@ export const PaymentDetail = () => {
       {response?.id && (
         <>
           {typeof response?.amount !== "undefined" && (
-            <Text font={theme.fontSizes.xxl} fontWgt={theme.fontWeights.bold}>
+            <Text
+              font={theme?.fontSizes?.xxl}
+              fontWgt={theme?.fontWeights?.bold}
+            >
               {currencyCode[response?.currencyCode]}{" "}
               {parseRawPrice(response?.amount)}
             </Text>
@@ -58,16 +61,16 @@ export const PaymentDetail = () => {
           {response?.amountRefunded > 0 && (
             <Group mr="20" ml="30">
               <Text
-                font={theme.fontSizes.sm}
-                color={theme.colors.neutral_700}
+                font={theme?.fontSizes?.sm}
+                color={theme?.colors?.neutral_700}
                 block
               >
                 Refund
               </Text>
               <Text
-                font={theme.fontSizes.lg}
-                color={theme.colors.neutral_700}
-                fontWgt={theme.fontWeights.bold}
+                font={theme?.fontSizes?.lg}
+                color={theme?.colors?.neutral_700}
+                fontWgt={theme?.fontWeights?.bold}
                 block
               >
                 {currencyCode[response?.currencyCode]}{" "}
@@ -79,16 +82,16 @@ export const PaymentDetail = () => {
           {typeof response?.amountCaptured !== "undefined" && (
             <Group mr="20" ml="30">
               <Text
-                font={theme.fontSizes.sm}
-                color={theme.colors.neutral_700}
+                font={theme?.fontSizes?.sm}
+                color={theme?.colors?.neutral_700}
                 block
               >
                 Final
               </Text>
               <Text
-                font={theme.fontSizes.lg}
-                color={theme.colors.neutral_700}
-                fontWgt={theme.fontWeights.bold}
+                font={theme?.fontSizes?.lg}
+                color={theme?.colors?.neutral_700}
+                fontWgt={theme?.fontWeights?.bold}
                 block
               >
                 {currencyCode[response?.currencyCode]}{" "}
@@ -100,11 +103,14 @@ export const PaymentDetail = () => {
           {response?.amountRefunded > 0 && (
             <Button withBorder relative>
               <LeftCurvedArrow
-                color={theme.colors.black}
+                color={theme?.colors?.black}
                 size="15"
                 viewBox="0 0 15 15"
               />
-              <Text fontWgt={theme.fontWeights.bold} font={theme.fontSizes.md}>
+              <Text
+                fontWgt={theme?.fontWeights?.bold}
+                font={theme?.fontSizes?.md}
+              >
                 Refunded
               </Text>
             </Button>
@@ -115,16 +121,16 @@ export const PaymentDetail = () => {
               {response?.currencyCode && (
                 <Group mb="5">
                   <Text
-                    font={theme.fontSizes.sm}
-                    color={theme.colors.neutral_700}
+                    font={theme?.fontSizes?.sm}
+                    color={theme?.colors?.neutral_700}
                     block
                   >
                     Currency
                   </Text>
                   <Text
-                    font={theme.fontSizes.lg}
-                    color={theme.colors.black}
-                    fontWgt={theme.fontWeights.bold}
+                    font={theme?.fontSizes.lg}
+                    color={theme?.colors.black}
+                    fontWgt={theme?.fontWeights.bold}
                     block
                   >
                     {response?.currencyCode}
@@ -135,22 +141,22 @@ export const PaymentDetail = () => {
               {response?.processor && (
                 <Group mb="5">
                   <Text
-                    font={theme.fontSizes.sm}
-                    color={theme.colors.neutral_700}
+                    font={theme?.fontSizes?.sm}
+                    color={theme?.colors?.neutral_700}
                     block
                   >
                     Processor
                   </Text>
                   <Image
-                    name={response.processor}
-                    {...(response.processor && {
+                    name={response?.processor}
+                    {...(response?.processor && {
                       url: getImageUrl(response.processor),
                     })}
                   />
                   <Text
-                    font={theme.fontSizes.md}
-                    color={theme.colors.black}
-                    fontWgt={theme.fontWeights.bold}
+                    font={theme?.fontSizes?.md}
+                    color={theme?.colors?.black}
+                    fontWgt={theme?.fontWeights?.bold}
                     p="0 7px"
                     relative
                   >
@@ -163,8 +169,8 @@ export const PaymentDetail = () => {
                 ?.network && (
                 <Group mb="5">
                   <Text
-                    font={theme.fontSizes.sm}
-                    color={theme.colors.neutral_700}
+                    font={theme?.fontSizes?.sm}
+                    color={theme?.colors?.neutral_700}
                     block
                   >
                     Payment Method
@@ -183,9 +189,9 @@ export const PaymentDetail = () => {
                     })}
                   />
                   <Text
-                    font={theme.fontSizes.md}
-                    color={theme.colors.black}
-                    fontWgt={theme.fontWeights.bold}
+                    font={theme?.fontSizes?.md}
+                    color={theme?.colors?.black}
+                    fontWgt={theme?.fontWeights?.bold}
                     p="0 7px"
                     relative
                   >
@@ -201,15 +207,15 @@ export const PaymentDetail = () => {
               {response?.orderId && (
                 <Group mb="5">
                   <Text
-                    font={theme.fontSizes.sm}
-                    color={theme.colors.neutral_700}
+                    font={theme?.fontSizes?.sm}
+                    color={theme?.colors?.neutral_700}
                     block
                   >
                     Your reference
                   </Text>
                   <Text
-                    font={theme.fontSizes.lg}
-                    color={theme.colors.black}
+                    font={theme?.fontSizes?.lg}
+                    color={theme?.colors?.black}
                     block
                   >
                     {concatString(response?.orderId, 20)}
@@ -220,15 +226,15 @@ export const PaymentDetail = () => {
               {response?.date && (
                 <Group mb="5">
                   <Text
-                    font={theme.fontSizes.sm}
-                    color={theme.colors.neutral_700}
+                    font={theme?.fontSizes?.sm}
+                    color={theme?.colors?.neutral_700}
                     block
                   >
                     Submitted
                   </Text>
                   <Text
-                    font={theme.fontSizes.lg}
-                    color={theme.colors.black}
+                    font={theme?.fontSizes?.lg}
+                    color={theme?.colors?.black}
                     block
                   >
                     {formatDate(response.date, "D MMM YYYY, h:mm")}
@@ -270,9 +276,9 @@ export const PaymentDetail = () => {
                       size={30}
                     />
                     <Text
-                      font={theme.fontSizes.lg}
-                      color={theme.colors.black}
-                      fontWgt={theme.fontWeights.bold}
+                      font={theme?.fontSizes?.lg}
+                      color={theme?.colors?.black}
+                      fontWgt={theme?.fontWeights?.bold}
                       p="0 7px"
                       relative
                     >
@@ -282,15 +288,15 @@ export const PaymentDetail = () => {
 
                   <Group mb="15">
                     <Text
-                      font={theme.fontSizes.sm}
-                      color={theme.colors.neutral_700}
+                      font={theme?.fontSizes?.sm}
+                      color={theme?.colors?.neutral_700}
                       block
                     >
                       Account ID
                     </Text>
                     <Text
-                      font={theme.fontSizes.lg}
-                      color={theme.colors.black}
+                      font={theme?.fontSizes?.lg}
+                      color={theme?.colors?.black}
                       block
                     >
                       {response?.processorMerchantId || "--"}
@@ -299,15 +305,15 @@ export const PaymentDetail = () => {
 
                   <Group>
                     <Text
-                      font={theme.fontSizes.sm}
-                      color={theme.colors.neutral_700}
+                      font={theme?.fontSizes?.sm}
+                      color={theme?.colors?.neutral_700}
                       block
                     >
                       Transaction ID
                     </Text>
                     <Text
-                      font={theme.fontSizes.lg}
-                      color={theme.colors.primary_100}
+                      font={theme?.fontSizes?.lg}
+                      color={theme?.colors?.primary_100}
                       block
                     >
                       {response?.transactions?.[0]?.processorTransactionId ||
@@ -338,9 +344,9 @@ export const PaymentDetail = () => {
                       size={30}
                     />
                     <Text
-                      font={theme.fontSizes.lg}
-                      color={theme.colors.black}
-                      fontWgt={theme.fontWeights.bold}
+                      font={theme?.fontSizes?.lg}
+                      color={theme?.colors?.black}
+                      fontWgt={theme?.fontWeights?.bold}
                       p="0 7px"
                       relative
                     >
@@ -350,15 +356,15 @@ export const PaymentDetail = () => {
 
                   <Group mb="15">
                     <Text
-                      font={theme.fontSizes.sm}
-                      color={theme.colors.neutral_700}
+                      font={theme?.fontSizes?.sm}
+                      color={theme?.colors?.neutral_700}
                       block
                     >
                       Cardholder Name
                     </Text>
                     <Text
-                      font={theme.fontSizes.lg}
-                      color={theme.colors.black}
+                      font={theme?.fontSizes?.lg}
+                      color={theme?.colors?.black}
                       block
                     >
                       {response?.paymentInstrument?.paymentInstrumentData
@@ -369,15 +375,15 @@ export const PaymentDetail = () => {
                   <Group>
                     <Group>
                       <Text
-                        font={theme.fontSizes.sm}
-                        color={theme.colors.neutral_700}
+                        font={theme?.fontSizes?.sm}
+                        color={theme?.colors?.neutral_700}
                         block
                       >
                         Card Number
                       </Text>
                       <Text
-                        font={theme.fontSizes.lg}
-                        color={theme.colors.black}
+                        font={theme?.fontSizes?.lg}
+                        color={theme?.colors?.black}
                         block
                       >
                         **** **** ****{" "}
@@ -388,15 +394,15 @@ export const PaymentDetail = () => {
 
                     <Group ml="30">
                       <Text
-                        font={theme.fontSizes.sm}
-                        color={theme.colors.neutral_700}
+                        font={theme?.fontSizes?.sm}
+                        color={theme?.colors?.neutral_700}
                         block
                       >
                         Epiration
                       </Text>
                       <Text
-                        font={theme.fontSizes.lg}
-                        color={theme.colors.black}
+                        font={theme?.fontSizes?.lg}
+                        color={theme?.colors?.black}
                         block
                       >
                         {response?.paymentInstrument?.paymentInstrumentData
@@ -417,9 +423,9 @@ export const PaymentDetail = () => {
                   <Group>
                     <Image name="3DS" url={getImageUrl("3DS")} size={30} />
                     <Text
-                      font={theme.fontSizes.lg}
-                      color={theme.colors.black}
-                      fontWgt={theme.fontWeights.bold}
+                      font={theme?.fontSizes?.lg}
+                      color={theme?.colors?.black}
+                      fontWgt={theme?.fontWeights?.bold}
                       p="0 7px"
                       relative
                     >
@@ -428,8 +434,8 @@ export const PaymentDetail = () => {
                   </Group>
                   <Group>
                     <Text
-                      font={theme.fontSizes.sm}
-                      color={theme.colors.neutral_700}
+                      font={theme?.fontSizes?.sm}
+                      color={theme?.colors?.neutral_700}
                       block
                     >
                       Response

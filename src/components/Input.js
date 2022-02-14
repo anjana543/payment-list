@@ -32,14 +32,14 @@ function Input({ val, css, handleChange, label }) {
   return (
     <Box>
       <Search
-        color={theme.colors.black}
+        color={theme?.colors?.black}
         size="20"
         viewBox="0 0 20 20"
         onClick={() => setShowField(!showField)}
       />
       <Text
-        font={theme.fontSizes.md}
-        fontWgt={theme.fontWeights.regular}
+        font={theme?.fontSizes?.md}
+        fontWgt={theme?.fontWeights?.regular}
         onClick={() => setShowField(!showField)}
         className={showField ? "hidden" : ""}
       >
@@ -51,6 +51,8 @@ function Input({ val, css, handleChange, label }) {
         className={!showField ? "hidden" : ""}
         css={css}
         ref={ref}
+        name={label}
+        data-testid={label}
       />
     </Box>
   );

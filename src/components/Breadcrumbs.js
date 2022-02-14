@@ -6,7 +6,7 @@ export const Breadcrumbs = styled.ul`
   padding: 0;
   & > li:before {
     content: "${(props) => props.separator || "/"}";
-    color: ${({ color, theme }) => color || theme.colors.primary_100};
+    color: ${({ color, theme }) => color || theme?.colors?.primary_100};
     padding: 0 8px;
   }
 `;
@@ -24,7 +24,7 @@ export const Crumb = styled.li`
       fontFamily: "secondary",
       lineHeight: "sm",
     })}
-    color: ${({ color, theme }) => color || theme.colors.primary_100};
+    color: ${({ color, theme }) => color || theme?.colors?.primary_100};
     text-decoration: none;
     &:hover,
     &:active {

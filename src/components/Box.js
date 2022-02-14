@@ -9,8 +9,8 @@ const Box = styled.div`
   })}
   justify-content:  ${({ align }) => align || "center"};
   align-items: ${({ align }) => align || "center"};
-  font-size: ${({ font, theme }) => (font || theme.fontSizes.lg) + "px"};
-  color: ${({ color, theme }) => color || theme.colors.black};
+  font-size: ${({ font, theme }) => (font || theme?.fontSizes?.lg) + "px"};
+  color: ${({ color, theme }) => color || theme?.colors?.black};
   padding: ${({ p }) => p + "px" || 0};
   margin: ${({ m }) => m + "px" || 0};
   ${(props) =>

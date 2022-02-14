@@ -19,7 +19,7 @@ export const PaymentList = () => {
   const { response, error, isLoading, hasMore } = useFetch(
     `${PAYMENT_LIST_URL}?limit=${limit}${urlParams}`,
     {
-      bearerToken: user.accessToken,
+      bearerToken: user?.accessToken,
     },
     "nextCursor"
   );
@@ -59,6 +59,14 @@ export const PaymentList = () => {
         })
       : list;
   }, [list, searchParam]);
+
+  useEffect(() => {
+    return () => {
+      setSearchParam("");
+      setUrlParams("");
+      setPayments([]);
+    };
+  }, []);
 
   return (
     <Container data-testid="payment">
